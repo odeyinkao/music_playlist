@@ -24,9 +24,17 @@ defmodule MusicPlaylistWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", MusicPlaylistWeb do
-  #   pipe_through :api
-  # end
+  scope "/" do
+    pipe_through [:api]
+
+    forward "/api", Absinthe.Plug,
+      schema: MusicPlaylistWeb.Graphql.Schema
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: MusicPlaylistWeb.Graphql.Schema,
+      socket: MusicPlaylistWeb.UserSocket,
+      interface: :playground
+  end
 
   # Enables LiveDashboard only for development
   #

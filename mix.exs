@@ -49,7 +49,12 @@ defmodule MusicPlaylist.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:absinthe, "~> 1.7.0"},
+      {:absinthe_plug, "~> 1.5.8"},
+      {:dataloader, "~> 1.0"},
+      {:cors_plug, "~> 3.0"},
+      {:atomic_map, "~> 0.9.3"}
     ]
   end
 
