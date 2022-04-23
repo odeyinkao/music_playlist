@@ -8,6 +8,9 @@ defmodule MusicPlaylist.Repo.Migrations.CreateUsersAuthTables do
       add :email, :citext, null: false
       add :hashed_password, :string, null: false
       add :confirmed_at, :naive_datetime
+      add :plan_id, references(:plans, on_delete: :nothing)
+      add :role, :string, default: "user"
+      add :playlist, :map, default: %{}
       timestamps()
     end
 

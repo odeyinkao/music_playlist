@@ -52,10 +52,17 @@ defmodule MusicPlaylist.Accounts.User do
     |> unique_constraint(:email)
   end
 
+  def update_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:plan_id])
+    |> cast_embed(:playlist)
+    |> foreign_key_constraint(:plan, name: :users_plan_id_fkey, message: "the plan ID does not exist")
+  end
+
   defp validate_password(changeset, opts) do
     changeset
     #|> validate_required([:password])
-    |> validate_length(:password, min: 12, max: 72)
+    |> validate_length(:password, min: 6, max: 72)
     # |> validate_format(:password, ~r/[a-z]/, message: "at least one lower case character")
     # |> validate_format(:password, ~r/[A-Z]/, message: "at least one upper case character")
     # |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")

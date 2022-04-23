@@ -14,5 +14,6 @@ defmodule MusicPlaylist.Musics.Music do
     music
     |> cast(attrs, [:name, :plan_id])
     |> validate_required([:name, :plan_id])
+    |> foreign_key_constraint(:plan, name: :musics_plan_id_fkey, message: "the plan ID does not exist")
   end
 end

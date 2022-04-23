@@ -3,12 +3,20 @@ defmodule MusicPlaylistWeb.Graphql.Schema do
   alias MusicPlaylist.{Plans, Musics, Accounts}
   alias MusicPlaylistWeb.Graphql.Dataloaders
 
+  import_types(MusicPlaylistWeb.Graphql.Models.Plans)
+  import_types(MusicPlaylistWeb.Graphql.Models.MusicsContext)
+  import_types(MusicPlaylistWeb.Graphql.Models.Accounts)
+
   query do
-    # All queries here
+    import_fields(:plan_queries)
+    import_fields(:music_context_queries)
+    import_fields(:account_queries)
   end
 
   mutation do
-    # All mutatations here
+    import_fields(:plan_mutations)
+    import_fields(:music_context_mutations)
+    import_fields(:account_mutations)
   end
 
   def context(ctx) do

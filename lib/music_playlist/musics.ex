@@ -9,6 +9,23 @@ defmodule MusicPlaylist.Musics do
   alias MusicPlaylist.Musics.Music
 
   @doc """
+  Checks if a music exists by its `id`
+
+  ## Examples
+
+      iex> check_music_exists?(123)
+      true
+
+  """
+  def check_music_exists?(music_id) do
+    query =
+      from m in Music,
+      where: m.id == ^music_id
+
+    Repo.exists?(query)
+  end
+
+  @doc """
   Returns the list of musics.
 
   ## Examples
@@ -36,6 +53,29 @@ defmodule MusicPlaylist.Musics do
 
   """
   def get_music!(id), do: Repo.get!(Music, id)
+
+  @doc """
+  Gets a single music.
+
+  Raises `Ecto.NoResultsError` if the Music does not exist.
+
+  ## Examples
+
+      iex> get_music!(123)
+      %Music{}
+
+      iex> get_music!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_music_with_plan(id) do
+    query =
+      from mp in Music,
+      where: mp.id == ^id,
+      preload: :plan
+
+    Repo.one!(query)
+  end
 
   @doc """
   Creates a music.
