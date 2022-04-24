@@ -45,6 +45,8 @@ defmodule MusicPlaylistWeb.Resolvers.UserTokens do
   Sign-in required.
   """
   def me(_, _, %{context: %{current_user: user}}) do
+    IO.inspect("Getting user")
+    IO.inspect(user)
     {:ok, user}
   end
 
