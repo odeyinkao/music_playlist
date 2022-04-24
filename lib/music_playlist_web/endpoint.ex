@@ -46,5 +46,7 @@ defmodule MusicPlaylistWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+   # For CORS issues
+   plug CORSPlug, origin: "*"
   plug MusicPlaylistWeb.Router
 end

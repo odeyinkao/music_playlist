@@ -17,6 +17,10 @@ defmodule MusicPlaylistWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :graphql do
+    plug MusicPlaylistWeb.Graphql.SetCurrentUser
+  end
+
   scope "/", MusicPlaylistWeb do
     pipe_through :browser
 
@@ -25,7 +29,7 @@ defmodule MusicPlaylistWeb.Router do
 
   # Other scopes may use custom stacks.
   scope "/" do
-    pipe_through [:api]
+    pipe_through [:api, :graphql]
 
     forward "/api", Absinthe.Plug,
       schema: MusicPlaylistWeb.Graphql.Schema

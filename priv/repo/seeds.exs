@@ -27,7 +27,7 @@ alias MusicPlaylist.{Accounts, Plans, Musics}
 
 
 %{
-  email: "mailto:superuser@admin.com",
+  email: "superuser@admin.com",
   password: "admin345",
   role: "superadmin",
   plan_id: 1,

@@ -86,7 +86,9 @@ defmodule MusicPlaylist.Plans do
 
   """
   def delete_plan(%Plan{} = plan) do
-    Repo.delete(plan)
+    plan
+    |> Plan.delete_changeset
+    |> Repo.delete
   end
 
   @doc """

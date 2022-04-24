@@ -6,7 +6,7 @@ defmodule MusicPlaylist.MusicsTest do
   describe "musics" do
     alias MusicPlaylist.Musics.Music
 
-    import MusicPlaylist.MusicsFixtures
+    import MusicPlaylist.{MusicsFixtures, PlansFixtures}
 
     @invalid_attrs %{name: nil}
 
@@ -21,7 +21,8 @@ defmodule MusicPlaylist.MusicsTest do
     end
 
     test "create_music/1 with valid data creates a music" do
-      valid_attrs = %{name: "some name"}
+      plan = plan_fixture()
+      valid_attrs = %{name: "some name", plan_id: plan.id}
 
       assert {:ok, %Music{} = music} = Musics.create_music(valid_attrs)
       assert music.name == "some name"
