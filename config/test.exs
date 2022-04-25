@@ -9,7 +9,7 @@ config :pbkdf2_elixir, :rounds, 1
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :music_playlist, MusicPlaylist.Repo,
-  username: "mac",
+  username: "postgres",
   password: "postgres",
   hostname: "localhost",
   database: "music_playlist_test#{System.get_env("MIX_TEST_PARTITION")}",

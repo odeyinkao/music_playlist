@@ -2,7 +2,7 @@ import Config
 
 # Configure your database
 config :music_playlist, MusicPlaylist.Repo,
-  username: "mac",
+  username: "postgres",
   password: "postgres",
   hostname: "localhost",
   database: "music_playlist_dev",
