@@ -13,7 +13,6 @@ defmodule MusicPlaylistWeb.Graphql.Models.Playlists do
   end
 
   object :playlist_obj do
-    field :name, non_null(:string)
     field :musics, list_of(:playlist_music_obj)
   end
 
